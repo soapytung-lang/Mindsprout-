@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindsprout | Hands-on Activity Kits for Brain Health</title>
+    <style>
+        /* === COLOR PALETTE: CALM, BEACHY & MEDITATIVE === */
+        :root {
+            --ocean-teal: #2a685e;
+            --deep-sea: #183e38;
+            --water-cyan: #69aca1;
+            --water-light: #e8f3f1;
+            --sand-warm: #e3eeec;
+            --sun-gold: #f2cc8f;
+            --coral-accent: #e07a5f;
+            --card-bg: #ffffff;
+            --text-main: #223330;
+            --text-muted: #526b66;
+            --border-radius: 20px;
+            --shadow-soft: 0 10px 30px rgba(42, 104, 94, 0.08);
+            --shadow-hover: 0 15px 35px rgba(42, 104, 94, 0.14);
+        }
+
+        /* === RESET & BASE STYLING WITH VECTOR SPIRAL / FLOURISH BACKGROUND === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--sand-warm);
+            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 80 Q 50 80, 50 50 Q 50 20, 80 20 M140 80 Q 110 80, 110 110 Q 110 140, 80 140' stroke='%23c9deda' stroke-width='1.5' fill='none' opacity='0.55'/%3E%3Cpath d='M80 20 Q 95 20, 95 35 Q 95 50, 80 50 Q 65 50, 65 35 Q 65 20, 80 20 Z' stroke='%23c9deda' stroke-width='1.2' fill='none' opacity='0.45'/%3E%3Cpath d='M80 140 Q 65 140, 65 125 Q 65 110, 80 110 Q 95 110, 95 125 Q 95 140, 80 140 Z' stroke='%23c9deda' stroke-width='1.2' fill='none' opacity='0.45'/%3E%3Ccircle cx='80' cy='80' r='4' fill='%23c9deda' opacity='0.4'/%3E%3C/svg%3E");
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* === CONTAINER & RESPONSIVE LAYOUT === */
+        .container {
+            width: 100%;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* === NAVIGATION & BRANDING === */
+        nav {
+            padding: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--ocean-teal);
+            letter-spacing: -0.5px;
+        }
+
+        .top-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .nav-story-link {
+            color: var(--ocean-teal);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .nav-story-link:hover {
+            color: var(--deep-sea);
+            text-decoration: underline;
+        }
+
+        /* Smaller Top Right Button */
+        .btn-top {
+            background: var(--ocean-teal);
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(42, 104, 94, 0.2);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-top:hover {
+            background: var(--deep-sea);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(42, 104, 94, 0.3);
+        }
+
+        /* === VECTOR ICONS STYLING === */
+        .svg-icon {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .svg-icon-teal {
+            stroke: var(--ocean-teal);
+            fill: none;
+        }
+
+        /* === SECTION CARDS === */
+        section {
+            padding: 24px 0;
+        }
+
+        .card-box {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 36px 28px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(105, 172, 161, 0.2);
+            margin-top: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background-color: var(--water-light);
+            color: var(--ocean-teal);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* === SECTION 1: HERO === */
+        .hero {
+            text-align: center;
+            padding: 10px 0 16px 0;
+            position: relative;
+        }
+
+        .hero-bg-glow {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 700px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(105, 172, 161, 0.25) 0%, rgba(227, 238, 236, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            line-height: 1.25;
+            color: var(--deep-sea);
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto 20px auto;
+            font-weight: 500;
+        }
+
+        /* Hero Water & Mandala Visual Canvas */
+        .hero-visual {
+            background: linear-gradient(135deg, #2a685e 0%, #183e38 100%);
+            border-radius: var(--border-radius);
+            padding: 24px 20px;
+            color: white;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            text-align: left;
+        }
+
+        .mandala-bg {
+            position: absolute;
+            right: -30px;
+            bottom: -30px;
+            opacity: 0.18;
+            width: 220px;
+            height: 220px;
+            pointer-events: none;
+        }
+
+        .card-circle-watermark {
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            opacity: 0.05;
+            width: 180px;
+            height: 180px;
+            pointer-events: none;
+        }
+
+        .hero-visual-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-visual-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--sun-gold);
+            margin-bottom: 6px;
+        }
+
+        /* === DYNAMIC VIEWS STYLING === */
+        .back-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .btn-back {
+            background: var(--water-light);
+            color: var(--ocean-teal);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(105, 172, 161, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-back:hover {
+            background: var(--ocean-teal);
+            color: #ffffff;
+        }
+
+        .story-text {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .story-text p {
+            margin-bottom: 18px;
+        }
+
+        .story-highlight {
+            background: var(--water-light);
+            border-left: 4px solid var(--ocean-teal);
+            padding: 18px 22px;
+            border-radius: 0 14px 14px 0;
+            font-weight: 600;
+            color: var(--deep-sea);
+            margin: 22px 0;
+            font-size: 1.08rem;
+        }
+
+        .founder-card {
+            background: #f8faf9;
+            border: 1px solid rgba(105, 172, 161, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .founder-card h3 {
+            color: var(--deep-sea);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .founder-badge-list {
+            margin: 12px 0 16px 0;
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .founder-badge-list li {
+            margin-bottom: 6px;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--ocean-teal);
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+
+        .linkedin-link:hover {
+            text-decoration: underline;
+            color: var(--deep-sea);
+        }
+
+        /* === SECTION 2: THE PROBLEM === */
+        .problem-section .card-box {
+            background: #ffffff;
+            border-left: 6px solid var(--coral-accent);
+        }
+
+        .quote-box {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: var(--deep-sea);
+            font-style: italic;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .cost-statement {
+            font-size: 1.05rem;
+            color: var(--coral-accent);
+            font-weight: 700;
+            background: #fdf2ef;
+            padding: 16px 20px;
+            border-radius: 12px;
+        }
+
+        /* === SECTION 3: WHAT YOU GET, PRICE, STEPS === */
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .price-badge {
+            font-size: 3.4rem;
+            font-weight: 900;
+            color: var(--ocean-teal);
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .price-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .kit-contents-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 24px 0;
+        }
+
+        @media (min-width: 580px) {
+            .kit-contents-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .kit-item {
+            background: var(--water-light);
+            padding: 14px 18px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--deep-sea);
+            font-size: 0.95rem;
+        }
+
+        .steps-container {
+            margin-top: 32px;
+        }
+
+        .step-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: var(--ocean-teal);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 {
+            font-size: 1.05rem;
+            color: var(--deep-sea);
+            margin-bottom: 2px;
+        }
+
+        .step-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Guarantee Box */
+        .guarantee-box {
+            background: linear-gradient(180deg, #fef9f0 0%, #ffffff 100%);
+            border: 2px dashed var(--sun-gold);
+            border-radius: 16px;
+            padding: 22px;
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        .guarantee-title {
+            color: #8a5300;
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* === PROOF & REAL RESEARCH STYLING === */
+        .proof-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+            background: var(--water-light);
+            padding: 18px;
+            border-radius: 16px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--ocean-teal);
+        }
+
+        .stat-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .proof-statement {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .evidence-list {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .evidence-point {
+            background: #f8faf9;
+            border-left: 4px solid var(--ocean-teal);
+            padding: 18px 20px;
+            border-radius: 0 12px 12px 0;
+            font-size: 1rem;
+        }
+
+        .evidence-point strong {
+            color: var(--deep-sea);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        .source-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* === SECTION 5: TWO REAL OBJECTIONS ANSWERED === */
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--deep-sea);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            padding-left: 32px;
+            font-size: 0.98rem;
+        }
+
+        /* === SECTION 6: SIGN-UP & BUTTON === */
+        .cta-section {
+            text-align: center;
+            padding: 20px 0 60px 0;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, #2a685e 0%, #183e38 100%);
+            color: white;
+            border-radius: 24px;
+            padding: 44px 24px;
+            box-shadow: 0 18px 36px rgba(24, 62, 56, 0.22);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card h2 {
+            font-size: 1.9rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .cta-card p {
+            font-size: 1.1rem;
+            color: var(--water-light);
+            margin-bottom: 28px;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Big Action Button */
+        .btn-cta {
+            display: inline-block;
+            width: 100%;
+            max-width: 440px;
+            background: var(--sun-gold);
+            color: #4a2e00;
+            font-size: 1.25rem;
+            font-weight: 800;
+            padding: 18px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(242, 204, 143, 0.4);
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-cta:hover {
+            background: #f7d7a3;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(242, 204, 143, 0.6);
+        }
+
+        .btn-subtext {
+            font-size: 0.9rem;
+            color: var(--water-light);
+            margin-top: 16px;
+            opacity: 0.95;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #e0ece9;
+        }
+
+        /* Mobile tweaks */
+        @media (max-width: 600px) {
+            nav {
+                justify-content: space-between;
+            }
+            .hero h1 { font-size: 1.7rem; }
+            .hero-sub { font-size: 1.05rem; }
+            .price-badge { font-size: 2.8rem; }
+            .quote-box { font-size: 1.15rem; }
+            .cta-card h2 { font-size: 1.45rem; }
+            .btn-cta { font-size: 1.1rem; padding: 16px 20px; }
+            .btn-top { font-size: 0.78rem; padding: 6px 12px; }
+            .top-nav-actions { gap: 6px; }
+            .card-box { padding: 22px 18px; }
+            body { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BRANDING HEADER -->
+    <header class="container">
+        <nav>
+            <div class="logo-wrap" onclick="showLandingView()" aria-label="Mindsprout Home">
+                <img src="logo.png" alt="Mindsprout Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">Mindsprout</span>
+            </div>
+
+            <!-- TOP RIGHT NAV ACTIONS -->
+            <div class="top-nav-actions">
+                <button type="button" onclick="showResearchView()" class="nav-story-link">Research</button>
+                <button type="button" onclick="showStoryView()" class="nav-story-link">Our Story</button>
+                <button type="button" onclick="scrollToCTA()" class="btn-top">Want to Learn more?</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- ========================================================
+             1. MAIN LANDING PAGE VIEW
+             ======================================================== -->
+        <div id="landing-view">
+            <!-- SECTION 1: HERO & MAIN HEADLINE -->
+            <section class="hero">
+                <div class="hero-bg-glow"></div>
+                
+                <h1>Hands-on-activity kits designed to keep minds active and lives connected.</h1>
+                
+                <p class="hero-sub">You upload a few family photos to a quick link, and we deliver a packed Mindsprout fanny pack designed to stimulate the brain and slow cognitive decline.</p>
+
+                <!-- Visual banner matching glistening ocean water & sacred geometry frond artwork -->
+                <div class="hero-visual">
+                    <svg class="mandala-bg" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#ffffff" stroke-width="1" fill="none"/>
+                        <circle cx="100" cy="60" r="40" stroke="#ffffff" stroke-width="1" fill="none"/>
+                        <circle cx="100" cy="140" r="40" stroke="#ffffff" stroke-width="1" fill="none"/>
+                        <circle cx="60" cy="100" r="40" stroke="#ffffff" stroke-width="1" fill="none"/>
+                        <circle cx="140" cy="100" r="40" stroke="#ffffff" stroke-width="1" fill="none"/>
+                    </svg>
+                    <div class="hero-visual-content">
+                        <div class="hero-visual-title">
+                            &bull; Cognitive Stimulation & Daily Mental Exercise
+                        </div>
+                        <p style="font-size: 0.95rem; opacity: 0.95;">Engaging activities that exercise memory, keep brain pathways moving, and help prevent the worsening of dementia symptoms.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THE PROBLEM IN YOUR CUSTOMER'S OWN WORDS -->
+            <section class="problem-section">
+                <span class="tag-pill">The Real Problem</span>
+                <div class="card-box">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <div class="quote-box">
+                        “I visited Mom, and we spent two hours sitting in silence watching television because we didn't know what to talk about or do together.”
+                    </div>
+                    <div class="cost-statement">
+                        What it is costing you right now: Leaving an aging brain idle speeds up memory loss and worsens dementia symptoms, while leaving visits feeling silent and discouraging.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: WHAT THEY GET, WHAT IT COSTS & 4 EASY STEPS -->
+            <section>
+                <span class="tag-pill">What You Get & How It Works</span>
+                <div class="card-box">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <div class="pricing-header">
+                        <div class="price-subtitle">Complete Mindsprout Brain Kit</div>
+                        <div class="price-badge">$60</div>
+                        <div class="price-subtitle">One-time cost • Free delivery included</div>
+                    </div>
+
+                    <hr style="border: none; border-top: 1px solid #e0ece9; margin: 20px 0;">
+
+                    <h3 style="color: var(--deep-sea); font-size: 1.15rem; margin-bottom: 14px;">Inside Your Mindsprout Fanny Pack:</h3>
+                    
+                    <div class="kit-contents-grid">
+                        <div class="kit-item">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M4 8h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+                            <span>Mindsprout Fanny Pack</span>
+                        </div>
+                        <div class="kit-item">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="m18.37 2.63 3 3a2.12 2.12 0 0 1 0 3L9 18l-4 1 1-4L18.37 2.63z"/><path d="M15 5l4 4"/></svg>
+                            <span>Adult Art Kits</span>
+                        </div>
+                        <div class="kit-item">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/></svg>
+                            <span>Tactile Squishies</span>
+                        </div>
+                        <div class="kit-item">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                            <span>Word Hunts & Brain Puzzles</span>
+                        </div>
+                        <div class="kit-item">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.6 2.96 1.5 4 .76.76 1.23 1.52 1.41 2.5"/></svg>
+                            <span>Flashcards on personal facts and real world events</span>
+                        </div>
+                        <div class="kit-item">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                            <span>Custom Printed Family Memories</span>
+                        </div>
+                        <div class="kit-item" style="grid-column: 1 / -1; background: #e8f4f1;">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="14" rx="2"/><rect x="8" y="2" width="14" height="14" rx="2"/></svg>
+                            <span>Custom Memory Flashcards (Printed from your uploaded photos)</span>
+                        </div>
+                    </div>
+
+                    <div class="steps-container">
+                        <h3 style="color: var(--deep-sea); font-size: 1.15rem; margin-bottom: 18px;">How It Works in 4 Steps:</h3>
+
+                        <div class="step-row">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <h4>Order your kit</h4>
+                                <p>Click the button below to secure your kit for $60.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <h4>Upload a few photos</h4>
+                                <p>Open our quick private upload link and pick a few favorite family photos. I handle all the custom card printing for you.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <h4>Unbox your fanny pack</h4>
+                                <p>Your pack arrives filled with brain-stimulating tools, personal event flashcards, and custom photo cards.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-row">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <h4>Keep the brain moving</h4>
+                                <p>Use the pack daily to exercise memory pathways, slow dementia progression, and stay connected.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guarantee Box -->
+                    <div class="guarantee-box">
+                        <div class="guarantee-title">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            My 15-Minute Daily Guarantee
+                        </div>
+                        <p style="color: var(--text-main); font-size: 0.95rem;">
+                            If your loved one does not spend at least fifteen minutes a day using these items during the first week, I will swap out two things they ignored for free. It keeps them busy with respectful activities that keep their brain active.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: TWO REAL OBJECTIONS ANSWERED -->
+            <section>
+                <span class="tag-pill">Common questions and concerns</span>
+                <div class="card-box">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span>1. "Is $60 worth it for a brain activity pack?"</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes. You get custom photo memory cards, real-world fact flashcards, word puzzles, sensory squishies, and adult art kits. It provides daily cognitive exercise that helps prevent dementia from worsening, while giving you meaningful tools for every visit.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" style="margin-bottom: 0;">
+                        <div class="faq-question">
+                            <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span>2. "Will this actually work to keep their brain moving?"</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes. By engaging multiple senses—tactile squishies, creative art, word puzzles, and recall flashcards—we stimulate different areas of the brain. If they don't use it for at least 15 minutes a day during week one, our free swap guarantee lets you trade two items they ignored for fresh activities.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: SIGN-UP SECTION -->
+            <section id="cta-section" class="cta-section">
+                <div class="cta-card">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200" style="opacity: 0.1; right: -20px; top: -20px;">
+                        <circle cx="100" cy="100" r="80" stroke="#ffffff" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    <h2>Ready to keep your loved one's mind active?</h2>
+                    <p>Get in touch with us today to order your kit or ask any questions.</p>
+
+                    <!-- BUTTON 2 AT BOTTOM: "Get in touch" -->
+                    <a id="cta-button" href="https://forms.gle/6ziKkNC44LhTFGX18" target="_blank" rel="noopener noreferrer" class="btn-cta">
+                        Get in touch
+                    </a>
+
+                    <div class="btn-subtext">Clicking opens our quick contact form. We read every message and respond within 24 hours.</div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ========================================================
+             2. RESEARCH VIEW (Dedicated Research Tab)
+             ======================================================== -->
+        <div id="research-view" style="display: none;">
+            <section>
+                <div class="back-nav-bar">
+                    <button type="button" class="btn-back" onclick="showLandingView()">
+                        <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                        Back to Home
+                    </button>
+                    <span class="tag-pill">Real Research</span>
+                </div>
+
+                <div class="card-box">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
+                    </svg>
+
+                    <h2 style="color: var(--deep-sea); font-size: 1.8rem; margin-bottom: 20px;">The Science Behind Activity Kits & Caregiver Support</h2>
+
+                    <div class="proof-stats" style="margin-top: 10px;">
+                        <div class="stat-card">
+                            <div class="stat-number">40+</div>
+                            <div class="stat-desc">Caregivers & Family Members Interviewed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-desc">Minutes of Daily Brain Stimulation</div>
+                        </div>
+                    </div>
+
+                    <div class="proof-statement" style="margin-top: 20px;">
+                        <strong>Built from real conversations and scientific research:</strong> We interviewed over 40 family members and senior caregivers. Over and over, caregivers shared their guilt over leaving loved ones sitting in front of the TV—and the intense burnout that comes with trying to plan meaningful activities on their own. Research proves that structured, hands-on activity kits transform daily dementia care:
+                    </div>
+
+                    <div class="evidence-list">
+                        <div class="evidence-point">
+                            <strong>
+                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+                                Prevents Agitation & Brain Inactivity
+                            </strong>
+                            Hands-on sensory stimulation (art, tactile objects, memory cards) reduces restless wandering, anxiety, and apathy while keeping neural pathways active.
+                            <div class="source-tag">Source: American Journal of Occupational Therapy & Alzheimer’s Association guidelines on non-pharmacological interventions.</div>
+                        </div>
+
+                        <div class="evidence-point">
+                            <strong>
+                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                Reduces Caregiver Burnout & Replaces TV Guilt
+                            </strong>
+                            Studies show that structured activity kits give caregivers an effortless, pre-prepared tool. This relieves the daily stress of searching for activities and replaces guilt with meaningful engagement.
+                            <div class="source-tag">Source: Journal of Dementia Care & Clinical Gerontologist research on caregiver burden reduction.</div>
+                        </div>
+
+                        <div class="evidence-point">
+                            <strong>
+                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="14" rx="2"/><rect x="8" y="2" width="14" height="14" rx="2"/></svg>
+                                Personal Photos Sparks Memory Retrieval
+                            </strong>
+                            Visual recognition cards with familiar faces and personal history unlock long-term memory retrieval far better than passive television viewing.
+                            <div class="source-tag">Source: International Psychogeriatrics study on Reminiscence Therapy in dementia care.</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 36px; padding-top: 24px; border-top: 1px solid #e0ece9;">
+                        <button type="button" class="btn-back" onclick="showLandingView()">
+                            <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                            Return to Main Page
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ========================================================
+             3. OUR STORY DYNAMIC VIEW (Meet the Founders)
+             ======================================================== -->
+        <div id="story-view" style="display: none;">
+            <section>
+                <div class="back-nav-bar">
+                    <button type="button" class="btn-back" onclick="showLandingView()">
+                        <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                        Back to Home
+                    </button>
+                    <span class="tag-pill">Our Story</span>
+                </div>
+
+                <div class="card-box">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
+                    </svg>
+                    
+                    <h2 style="color: var(--deep-sea); font-size: 1.8rem; margin-bottom: 20px;">Why We Founded Mindsprout</h2>
+
+                    <div class="story-text">
+                        <!-- MEET SOPHIA -->
+                        <div class="founder-card" style="margin-top: 0;">
+                            <h3>Meet Sophia Tung</h3>
+                            <p>I am a high school student (GPA: 3.85) who thrives on hands-on involvement, community service, and creative expression. Whether I am coordinating a multi-school medical convention, spending quality time visiting hospice patients, or illustrating children's books and creating art, I bring energy, leadership, and care to everything I take on.</p>
+                            
+                            <ul class="founder-badge-list">
+                                <li><strong>Girl Scout Silver Award:</strong> Girl Scouts of the USA (2024)</li>
+                                <li><strong>Girl Scout Bronze Award:</strong> Girl Scouts of the USA (2022)</li>
+                                <li><strong>Certifications:</strong> Health & Safety Institute CPR & AED Trained (July 2026)</li>
+                                <li><strong>Media & Digital Tools:</strong> Toon Boom Harmony, Adobe After Effects, Adobe Premiere, CapCut, FlipaClip</li>
+                            </ul>
+
+                            <p>My personal experience with dementia is through my Grandma, or 婆婆 (Popo) in Chinese. My Grandma was diagnosed with dementia in early 2021. It soon became obvious how the disease affects a person's memory, cognitive function, and fine motor skills. It started out with simple slip-ups, but over time it became more and more noticeable. I still remember getting a phone call from my Grandpa, who said that my Grandma was supposed to get groceries like usual, but somehow ended up in Kapolei. It seemed funny at the time, but I wish I had taken action earlier when I first noticed the signs—now she can barely remember that I am her granddaughter.</p>
+                            
+                            <div class="story-highlight">
+                                "I put small memorable pictures of her favorite trips to Macau, custom coloring sheets I made specifically for her, and tactile fidgets; she absolutely loved it! My grandma loved telling me about the pictures and coloring alongside me while I did my homework."
+                            </div>
+
+                            <p>Recently, in late 2025, I began researching dementia activity kits specifically designed to help slow down cognitive decline. My family and I put together a kit for my Grandma in a small shoebox, and that is where it all started. Small connections like this are what fuel our brand.</p>
+
+                            <a href="https://www.linkedin.com/in/sophia-tung-700474425/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                                <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                Connect with Sophia on LinkedIn →
+                            </a>
+                        </div>
+
+                        <!-- MEET EMILY -->
+                        <div class="founder-card" style="margin-top: 28px;">
+                            <h3>Meet Emily Tomasso</h3>
+                            <p>I watch grandparents go to a store they have visited for years and suddenly forget where it is. That is why I am building a kit full of games and tools to help older adults keep their minds active and slow down memory loss.</p>
+                            
+                            <p>Medical research shows that playing memory games helps keep brains sharp over time. I am taking that concept and putting it into a simple, easy-to-use kit that families can use at home with their older relatives.</p>
+                            
+                            <p>I am currently a student at Hawaii Baptist Academy and part of the Blue Academy bootcamp in Honolulu. This week, I am turning this idea into an actual product instead of just thinking about it.</p>
+                            
+                            <p>Before building this kit, I learned the value of working through hard problems by teaching my friends math when they got stuck and learning to ask for help when my chemistry homework confused me.</p>
+
+                            <p>If you want to learn more about the kit or test out a sample game with your family, send me a message on LinkedIn!</p>
+
+                            <a href="https://www.linkedin.com/in/emilytomassob47466425/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                                <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                Connect with Emily on LinkedIn →
+                            </a>
+                        </div>
+
+                        <p style="font-weight: 700; color: var(--deep-sea); font-size: 1.15rem; margin-top: 28px; text-align: center;">Mindsprout was founded by Emily Tomasso and Sophia Tung with the mission to create activity kits and purpose-built activities to support those within the early stages of dementia.</p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #e0ece9;">
+                        <button type="button" class="btn-back" onclick="showLandingView()">
+                            <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                            Return to Main Page
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Mindsprout. Hands-on-activity kits designed to keep minds active and lives connected.</p>
+        </div>
+    </footer>
+
+    <!-- DYNAMIC VIEW SWITCHING JAVASCRIPT -->
+    <script>
+        function showResearchView() {
+            document.getElementById('landing-view').style.display = 'none';
+            document.getElementById('story-view').style.display = 'none';
+            document.getElementById('research-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showStoryView() {
+            document.getElementById('landing-view').style.display = 'none';
+            document.getElementById('research-view').style.display = 'none';
+            document.getElementById('story-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showLandingView() {
+            document.getElementById('story-view').style.display = 'none';
+            document.getElementById('research-view').style.display = 'none';
+            document.getElementById('landing-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToCTA() {
+            showLandingView();
+            setTimeout(function() {
+                const cta = document.getElementById('cta-section');
+                if (cta) {
+                    cta.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 60);
+        }
+    </script>
+</body>
+</html>
