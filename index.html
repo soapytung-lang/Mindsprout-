@@ -22,7 +22,7 @@
             --shadow-hover: 0 15px 35px rgba(42, 104, 94, 0.14);
         }
 
-        /* === RESET & BASE STYLING === */
+        /* === RESET & BASE STYLING WITH VECTOR SPIRAL / FLOURISH BACKGROUND === */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -36,6 +36,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--sand-warm);
+            background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 80 Q 50 80, 50 50 Q 50 20, 80 20 M140 80 Q 110 80, 110 110 Q 110 140, 80 140' stroke='%23c9deda' stroke-width='1.5' fill='none' opacity='0.55'/%3E%3Cpath d='M80 20 Q 95 20, 95 35 Q 95 50, 80 50 Q 65 50, 65 35 Q 65 20, 80 20 Z' stroke='%23c9deda' stroke-width='1.2' fill='none' opacity='0.45'/%3E%3Cpath d='M80 140 Q 65 140, 65 125 Q 65 110, 80 110 Q 95 110, 95 125 Q 95 140, 80 140 Z' stroke='%23c9deda' stroke-width='1.2' fill='none' opacity='0.45'/%3E%3Ccircle cx='80' cy='80' r='4' fill='%23c9deda' opacity='0.4'/%3E%3C/svg%3E");
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
@@ -254,7 +255,7 @@
             margin-bottom: 6px;
         }
 
-        /* === STORY VIEW STYLING === */
+        /* === DYNAMIC VIEWS STYLING === */
         .back-nav-bar {
             display: flex;
             align-items: center;
@@ -467,7 +468,7 @@
             gap: 8px;
         }
 
-        /* === SECTION 4: PROOF & REAL RESEARCH === */
+        /* === PROOF & REAL RESEARCH STYLING === */
         .proof-stats {
             display: flex;
             flex-wrap: wrap;
@@ -498,24 +499,25 @@
         }
 
         .proof-statement {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-main);
-            line-height: 1.65;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         .evidence-list {
             margin-top: 16px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 18px;
         }
 
         .evidence-point {
             background: #f8faf9;
             border-left: 4px solid var(--ocean-teal);
-            padding: 14px 18px;
+            padding: 18px 20px;
             border-radius: 0 12px 12px 0;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         .evidence-point strong {
@@ -523,13 +525,14 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
         }
 
         .source-tag {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 8px;
             font-style: italic;
         }
 
@@ -642,7 +645,7 @@
             .cta-card h2 { font-size: 1.45rem; }
             .btn-cta { font-size: 1.1rem; padding: 16px 20px; }
             .btn-top { font-size: 0.78rem; padding: 6px 12px; }
-            .top-nav-actions { gap: 8px; }
+            .top-nav-actions { gap: 6px; }
             .card-box { padding: 22px 18px; }
             body { font-size: 17px; }
         }
@@ -660,6 +663,7 @@
 
             <!-- TOP RIGHT NAV ACTIONS -->
             <div class="top-nav-actions">
+                <button type="button" onclick="showResearchView()" class="nav-story-link">Research</button>
                 <button type="button" onclick="showStoryView()" class="nav-story-link">Our Story</button>
                 <button type="button" onclick="scrollToCTA()" class="btn-top">Want to Learn more?</button>
             </div>
@@ -813,60 +817,6 @@
                 </div>
             </section>
 
-            <!-- SECTION 4: PROOF & REAL RESEARCH -->
-            <section>
-                <span class="tag-pill">Real Research</span>
-                <div class="card-box">
-                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
-                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
-                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
-                    </svg>
-                    <div class="proof-stats">
-                        <div class="stat-card">
-                            <div class="stat-number">40+</div>
-                            <div class="stat-desc">Caregivers & Family Members Interviewed</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-desc">Minutes of Daily Brain Stimulation</div>
-                        </div>
-                    </div>
-
-                    <div class="proof-statement">
-                        <strong>Built from real conversations and scientific research:</strong> We interviewed over 40 family members and senior caregivers. Over and over, caregivers shared their guilt over leaving loved ones sitting in front of the TV—and the intense burnout that comes with trying to plan meaningful activities on their own. Research proves that structured, hands-on activity kits transform daily dementia care:
-                    </div>
-
-                    <div class="evidence-list">
-                        <div class="evidence-point">
-                            <strong>
-                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
-                                Prevents Agitation & Brain Inactivity
-                            </strong>
-                            Hands-on sensory stimulation (art, tactile objects, memory cards) reduces restless wandering, anxiety, and apathy while keeping neural pathways active.
-                            <div class="source-tag">Source: American Journal of Occupational Therapy & Alzheimer’s Association guidelines on non-pharmacological interventions.</div>
-                        </div>
-
-                        <div class="evidence-point">
-                            <strong>
-                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                                Reduces Caregiver Burnout & Replaces TV Guilt
-                            </strong>
-                            Studies show that structured activity kits give caregivers an effortless, pre-prepared tool. This relieves the daily stress of searching for activities and replaces guilt with meaningful engagement.
-                            <div class="source-tag">Source: Journal of Dementia Care & Clinical Gerontologist research on caregiver burden reduction.</div>
-                        </div>
-
-                        <div class="evidence-point">
-                            <strong>
-                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="14" rx="2"/><rect x="8" y="2" width="14" height="14" rx="2"/></svg>
-                                Personal Photos Sparks Memory Retrieval
-                            </strong>
-                            Visual recognition cards with familiar faces and personal history unlock long-term memory retrieval far better than passive television viewing.
-                            <div class="source-tag">Source: International Psychogeriatrics study on Reminiscence Therapy in dementia care.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- SECTION 5: TWO REAL OBJECTIONS ANSWERED -->
             <section>
                 <span class="tag-pill">Common questions and concerns</span>
@@ -919,7 +869,83 @@
 
 
         <!-- ========================================================
-             2. OUR STORY DYNAMIC VIEW (Meet the Founders)
+             2. RESEARCH VIEW (Dedicated Research Tab)
+             ======================================================== -->
+        <div id="research-view" style="display: none;">
+            <section>
+                <div class="back-nav-bar">
+                    <button type="button" class="btn-back" onclick="showLandingView()">
+                        <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                        Back to Home
+                    </button>
+                    <span class="tag-pill">Real Research</span>
+                </div>
+
+                <div class="card-box">
+                    <svg class="card-circle-watermark" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" stroke="#2a685e" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="50" stroke="#2a685e" stroke-width="1.5" fill="none"/>
+                    </svg>
+
+                    <h2 style="color: var(--deep-sea); font-size: 1.8rem; margin-bottom: 20px;">The Science Behind Activity Kits & Caregiver Support</h2>
+
+                    <div class="proof-stats" style="margin-top: 10px;">
+                        <div class="stat-card">
+                            <div class="stat-number">40+</div>
+                            <div class="stat-desc">Caregivers & Family Members Interviewed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-desc">Minutes of Daily Brain Stimulation</div>
+                        </div>
+                    </div>
+
+                    <div class="proof-statement" style="margin-top: 20px;">
+                        <strong>Built from real conversations and scientific research:</strong> We interviewed over 40 family members and senior caregivers. Over and over, caregivers shared their guilt over leaving loved ones sitting in front of the TV—and the intense burnout that comes with trying to plan meaningful activities on their own. Research proves that structured, hands-on activity kits transform daily dementia care:
+                    </div>
+
+                    <div class="evidence-list">
+                        <div class="evidence-point">
+                            <strong>
+                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"/></svg>
+                                Prevents Agitation & Brain Inactivity
+                            </strong>
+                            Hands-on sensory stimulation (art, tactile objects, memory cards) reduces restless wandering, anxiety, and apathy while keeping neural pathways active.
+                            <div class="source-tag">Source: American Journal of Occupational Therapy & Alzheimer’s Association guidelines on non-pharmacological interventions.</div>
+                        </div>
+
+                        <div class="evidence-point">
+                            <strong>
+                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                Reduces Caregiver Burnout & Replaces TV Guilt
+                            </strong>
+                            Studies show that structured activity kits give caregivers an effortless, pre-prepared tool. This relieves the daily stress of searching for activities and replaces guilt with meaningful engagement.
+                            <div class="source-tag">Source: Journal of Dementia Care & Clinical Gerontologist research on caregiver burden reduction.</div>
+                        </div>
+
+                        <div class="evidence-point">
+                            <strong>
+                                <svg class="svg-icon svg-icon-teal" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="14" rx="2"/><rect x="8" y="2" width="14" height="14" rx="2"/></svg>
+                                Personal Photos Sparks Memory Retrieval
+                            </strong>
+                            Visual recognition cards with familiar faces and personal history unlock long-term memory retrieval far better than passive television viewing.
+                            <div class="source-tag">Source: International Psychogeriatrics study on Reminiscence Therapy in dementia care.</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 36px; padding-top: 24px; border-top: 1px solid #e0ece9;">
+                        <button type="button" class="btn-back" onclick="showLandingView()">
+                            <svg class="svg-icon" viewBox="0 0 24 24" style="width: 18px; height: 18px;"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                            Return to Main Page
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ========================================================
+             3. OUR STORY DYNAMIC VIEW (Meet the Founders)
              ======================================================== -->
         <div id="story-view" style="display: none;">
             <section>
@@ -1008,14 +1034,23 @@
 
     <!-- DYNAMIC VIEW SWITCHING JAVASCRIPT -->
     <script>
+        function showResearchView() {
+            document.getElementById('landing-view').style.display = 'none';
+            document.getElementById('story-view').style.display = 'none';
+            document.getElementById('research-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function showStoryView() {
             document.getElementById('landing-view').style.display = 'none';
+            document.getElementById('research-view').style.display = 'none';
             document.getElementById('story-view').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showLandingView() {
             document.getElementById('story-view').style.display = 'none';
+            document.getElementById('research-view').style.display = 'none';
             document.getElementById('landing-view').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
